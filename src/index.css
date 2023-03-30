@@ -1,13 +1,268 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+:root {
+  /* ### Primary */
+  --Marine-blue: hsl(213, 96%, 18%);
+  --Purplish-blue: hsl(243, 100%, 62%);
+  --Pastel-blue: hsl(228, 100%, 84%);
+  --Light-blue: hsl(206, 94%, 87%);
+  --Strawberry-red: hsl(354, 84%, 57%);
+
+/* ### Neutral */
+  --Cool-gray: hsl(231, 11%, 63%);
+  --Light-gray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
 }
+label {
+  display: block;
+}
+.error-message {
+  color: var(--Strawberry-red);
+}
+.btn-blue {
+  border: none;
+  background-color: var(--Marine-blue);
+  border-radius: 6px;
+  padding: 10px 20px;
+  color: var(--White);
+}
+.btn-blue:hover {
+  background: #164a8a;
+}
+.btn-gry {
+  border: none;
+  background: none;
+  color: var(--Cool-gray);
+  padding: 10px 20px;
+}
+.btn-gry:hover {
+  color: var(--Marine-blue);
+}
+
+
+/* Start Multi Step Form Section */
+.multistep-form {
+  min-height: 100vh;
+  background-color: var(--Magnolia);
+}
+.multistep-form .form-body {
+  background-color: var(--White);
+  z-index: 3;
+  width: 90%;
+}
+@media(min-width:768px ) {
+  .multistep-form .form-body {
+    width: 100%;
+  }
+}
+@media (min-width:950px) {
+  .multistep-form .form-body {
+    width: 85%;
+  }
+}
+@media (min-width:1100px) {
+  .multistep-form .form-body {
+    width: 75%;
+  }
+}
+@media (min-width:1300px) {
+  .multistep-form .form-body {
+    width: 60%;
+  }
+}
+/* End Multi Step Form Section */
+
+
+
+
+
+/* Start sidebar section */
+/* Start sidebar of desktop screen section */
+.sidebar ul {
+  color: var(--White);
+}
+@media (min-width:768px) {
+  .img-desktop {
+    min-width: 100%;
+  }
+  .sidebar {
+    position: relative;
+  }
+  .sidebar ul {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  .sidebar ul li {
+    margin-bottom:20px
+  }
+  .sidebar ul li .list-item {
+    display:grid;
+    align-items: center;
+    grid-template-columns: min-content 1fr;
+    column-gap: 10px;
+  }
+  .sidebar ul li .step-number {
+    /* content: counter(step-count);
+    counter-increment: step-count; */
+    grid-column: 1/2;
+    grid-row:1/2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--White);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+
+/* Start sidebar of Mobile screen section */
+@media (max-width:768px) {
+  .multistep-form {
+    position: relative;
+  }
+  .img-mobile {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+  .sidebar {
+    margin-top: 40px;
+  }
+  .sidebar ul {
+    display:flex;
+    justify-content:center;
+    gap: 20px;
+  }
+  .sidebar ul li .step-number {
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--White);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .form-body {
+    height: fit-content;
+  }
+  .side-form {
+    background: white;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+}
+.sidebar ul li .step-number.active {
+  background-color: var(--Light-blue);
+  color: black;
+}
+/* End sidebar of desktop screen section*/
+
+
+
+
+
+/* Start Personal Information Section */
+.personal-info {
+  color:var(--Marine-blue);
+}
+.personal-info label {
+  margin-bottom: 5px;
+}
+.personal-info input {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid var(--Cool-gray);
+}
+.personal-info input:focus {
+  border-color: var(--Marine-blue);
+}
+/* End Personal Information Section */
+
+
+
+
+/* Start Select Plan Section */
+.plan {
+  color:var(--Marine-blue);
+}
+.plan img {
+  max-width: 40px;
+}
+.plan .plan-option {
+  border: 1px solid var(--Cool-gray); 
+}
+.plan .plan-option.selected {
+  background-color: var(--Magnolia);
+  border-color: var(--Marine-blue);
+}
+.switch {
+  background-color: var(--Magnolia);
+  font-weight: bold;
+}
+.check {
+    width: 45px;
+    background-color: var(--Marine-blue);
+    border-radius: 25px;
+    display:flex;
+    align-items:center;
+    padding: 5px;
+    cursor: pointer;
+}
+.circle {
+  background-color: white;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+}
+/* End Select Plan Section */
+
+
+
+/* Start Add Ons Option Section */
+.add-ons {
+  border: 1px solid var(--Cool-gray);
+}
+.add-ons.checked {
+  background-color: var(--Magnolia);
+}
+.form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+}
+/* End Add Ons Option Section */
+
+
+/* Start Summary Section */
+.summary {
+  color: var(--Marine-blue)
+}
+.summary .chosen-service {
+  background-color: var(--Magnolia)
+}
+.summary .total-price {
+  color: var(--Marine-blue)
+} 
+/* End Summary Section */
+
+
+/* Start Thank You Section */
+.thank-you {
+  color: var(--Marine-blue);
+}
+/* End Thank You Section */
