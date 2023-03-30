@@ -11,6 +11,7 @@ export const FormContextProvider = ({children}) => {
         email: " ",
         phone: "",
         plan:"",
+        indexOfSelectecdPlan:0,
         planPrice: "",
         period:"monthly",
         onlineService: false,

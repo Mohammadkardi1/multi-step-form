@@ -29,7 +29,7 @@ export const addOnsOption = [
 
 export let chosenItems = {};
 
-export const AddOns = ({navigation}) => {
+export const AddOns = ({nextStep, preStep}) => {
 
     const {formDataContext, setFormDataContext} = useContext(FormContext)
 
@@ -40,7 +40,7 @@ export const AddOns = ({navigation}) => {
 
 
     const nextpageHandler = () => {
-        navigation.next()
+        nextStep()
     }
 
     return (
@@ -82,7 +82,7 @@ export const AddOns = ({navigation}) => {
                 </div>
                 <div className='d-flex justify-content-between'>
                     <button className='btn-blue '
-                        onClick={() => navigation.previous()}>
+                        onClick={() => preStep()}>
                         Go Back
                     </button>
                     <button className='btn-blue'

@@ -4,7 +4,7 @@ import { FormContext } from '../Global/FormContext';
 import { useContext } from 'react';
 
 
-export const PersonalInfo = ({navigation}) => {
+export const PersonalInfo = ({nextStep, preStep}) => {
 
     const {register,  handleSubmit, formState: {errors}  } = useForm()
     const {formDataContext, setFormDataContext } = useContext(FormContext)
@@ -14,7 +14,7 @@ export const PersonalInfo = ({navigation}) => {
             ["name"]: data.name, 
             ["email"]: data.email ,  
             ["phone"]: data.phone  })
-        navigation.next()
+        nextStep()
     }
 
     return (

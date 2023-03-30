@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import bgDesktop from './Images/bg-sidebar-desktop.svg'
 import bgMobile from './Images/bg-sidebar-mobile.svg'
 import { CurrentStep } from './StepForm/CurrentStep'
-import { useStep, } from "react-hooks-helper";
+// import { useStep, } from "react-hooks-helper";
 
 const sidebar_steps = [
     {
@@ -34,10 +34,22 @@ const steps = [
 
 export const Multistep_Form = () => {
 
-    const { step, navigation } = useStep({
-        steps,
-        initialStep: 0,
-        });
+
+
+    const [currentStep, setCurrentStep ] = useState(0)
+
+    const nextStep = () => {
+        setCurrentStep(currentStep+1)
+    }
+    const preStep = () => {
+        setCurrentStep(currentStep-1)
+    }
+
+
+    // const { step, navigation } = useStep({
+    //     steps,
+    //     initialStep: 0,
+    //     });
 
     return (
         <div className='multistep-form d-flex d-column justify-content-center d-md-row align-items-md-center'>
@@ -56,7 +68,7 @@ export const Multistep_Form = () => {
                                 return (
                                     <li>
                                         <div className='list-item'>
-                                            <div className={`step-number ${step.id === item.step_id && "active"}`} >
+                                            <div className={`step-number ${currentStep === index && "active"}`} >
                                                 <p className='fw-bold m-0'>{index+1}</p>
                                             </div>
                                             <div className='d-none d-md-block step-text'>
@@ -71,7 +83,7 @@ export const Multistep_Form = () => {
                 </div>
                 {/*Form side */}
                 <div className='side-form w-100 px-md-4 mt-md-4'>
-                    <CurrentStep step={step}  navigation= {navigation}/>
+                    <CurrentStep currentStep={currentStep} nextStep={nextStep}  preStep= {preStep}/>
                 </div>
             </div>
         </div>

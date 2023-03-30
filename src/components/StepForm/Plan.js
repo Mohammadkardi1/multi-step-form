@@ -25,28 +25,30 @@ const options = [
     }
 ]
 
-export const Plan = ({navigation}) => {
+export const Plan = ({nextStep, preStep}) => {
 
     const [showError, setShowError] = useState(false)
-    const [indexOfSelectecdPlan, setIndexOfSelectedPlan ] = useState(0)
+    // const [indexOfSelectecdPlan, setIndexOfSelectedPlan ] = useState(0)
     const {formDataContext, setFormDataContext} = useContext(FormContext)
 
     const planHandler =  (index, selectedPlan, selectedPrice ) => {
-        setFormDataContext({...formDataContext, ["plan"]: selectedPlan, ["planPrice"]: selectedPrice })
+        setFormDataContext({...formDataContext, ["plan"]: selectedPlan,
+            ["planPrice"]: selectedPrice, 
+            ['indexOfSelectecdPlan'] :index })
         setShowError(false)
-        setIndexOfSelectedPlan(index)
+        // setIndexOfSelectedPlan(index)
     }
 
-    const periodHandler =   (selectedPlanHere) => {
-        setFormDataContext({...formDataContext, ["period"]: selectedPlanHere,
-        ["planPrice"]: selectedPlanHere === "monthly" ? options[indexOfSelectecdPlan].monthlyPrice : options[indexOfSelectecdPlan].yearlyPrice })
+    const periodHandler =   (selectedPeriod) => {
+        setFormDataContext({...formDataContext, ["period"]: selectedPeriod,
+        ["planPrice"]: selectedPeriod === "monthly" ? options[formDataContext.indexOfSelectecdPlan].monthlyPrice : options[formDataContext.indexOfSelectecdPlan].yearlyPrice })
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (formDataContext.plan) {
             setShowError(false)
-            navigation.next()
+            nextStep()
         } else {
             setShowError(true)
         }
@@ -101,7 +103,7 @@ export const Plan = ({navigation}) => {
                 {/* button */}
                 <div className='d-flex justify-content-between'>
                     <button className='btn-blue '
-                        onClick={() =>  navigation.previous()}>
+                        onClick={() =>  preStep()}>
                         Go Back
                     </button>
                     <button className='btn-blue'

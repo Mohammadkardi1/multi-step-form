@@ -21,25 +21,25 @@ const defaultData = {
     total: 0
 }
 
-export const CurrentStep = ({step, navigation}) => {
+export const CurrentStep = ({currentStep, nextStep, preStep}) => {
 
-    const [formData, setForm] = useState(defaultData)
-    useEffect (() => {
-        localStorage.setItem("Current_Step",JSON.stringify(step.id))
-    },[step])
+    // const [formData, setForm] = useState(defaultData)
+    // useEffect (() => {
+    //     localStorage.setItem("Current_Step",JSON.stringify(step.id))
+    // },[step])
 
-    const props = {formData, setForm, navigation }
+    const props = {nextStep, preStep}
 
-    switch (step.id) {
-        case "personalInfo":
+    switch (currentStep) {
+        case 0:
             return <PersonalInfo {...props}/>
-        case "plan": 
+        case 1: 
             return <Plan {...props}/>
-        case "addOns" :
+        case 2 :
             return <AddOns {...props}/>
-        case "summary" :
+        case 3 :
             return <Summary {...props}/>
-        case "finish":
+        case 4:
             return <Finish {...props}/>
         default: return <h1>Multi step form</h1>
     }

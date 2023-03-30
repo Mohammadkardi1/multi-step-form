@@ -4,7 +4,7 @@ import { FormContext } from '../Global/FormContext';
 import {addOnsOption} from "./AddOns"
 
 
-export const Summary = ({navigation}) => {
+export const Summary = ({nextStep, preStep}) => {
 
     const {formDataContext, setFormDataContext} = useContext(FormContext)
     const filterServices = addOnsOption.filter((item) => formDataContext[item.id])
@@ -66,11 +66,11 @@ export const Summary = ({navigation}) => {
                 </div>
                 <div className='d-flex justify-content-between'>
                     <button className='btn-blue'
-                        onClick={() => navigation.previous()}>
+                        onClick={() => preStep()}>
                         Go Back
                     </button>
                     <button className='btn-blue'
-                        onClick={() => navigation.next()}>
+                        onClick={() => nextStep()}>
                         Next Step
                     </button>
                 </div>
